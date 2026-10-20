@@ -158,6 +158,9 @@
     .work-plan td { padding: 12px 13px; border: 1px solid var(--line); vertical-align: top; color: #53615d; }
     .work-plan tr:nth-child(even) td { background: #f7faf8; }
     .status-note { margin-top: 16px; padding: 14px 17px; border: 1px solid #efdfca; border-radius: 11px; background: var(--amber-pale); color: #654c2e; font-size: 14px; }
+    .provisioning-gate { margin-top: 14px; padding: 19px 20px; border: 1px solid #d6e5ee; border-left: 5px solid var(--blue); border-radius: 13px; background: #f4f9fc; }
+    .provisioning-gate p { margin: 8px 0 0; color: #4e626e; font-size: 14px; }
+    .provisioning-gate .steps { margin-top: 12px; }
     .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-top: 16px; }
     .milestone { padding: 14px; border-radius: 11px; background: var(--wash); }
     .milestone b { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: 13px; }
@@ -409,13 +412,26 @@
         <p>Late, client-owned user setup can block Academy and Help Center access. D/E also has no live trainer to carry the go-live learning path. Manual provisioning is a design constraint, not a reason to drop self-service.</p>
       </div>
       <div class="status-note"><b>Status needs refresh:</b> The Sep 21 task-force outline says discovery and the D/E course outline had not started as tracked work. It describes the team as behind on discovery, not in an R3 crisis. Refresh interview and pilot progress before sharing this as current; the newest linked Slack details are dated Sep 24.</div>
+      <div class="provisioning-gate">
+        <span class="tag blue">Critical start dependency · owner not set</span>
+        <h3>Contract processing unlocks the live CA environment.</h3>
+        <p>The biggest timing hurdle is the gap between contract signature and contract processing. Processing opens the live customer environment; the client can start configuring only after an initial admin user has been created. Consulting typically creates that admin during its first engagement after project kickoff.</p>
+        <div class="steps" aria-label="Initial customer provisioning sequence">
+          <span class="step">Contract signed</span><span class="arrow">→</span>
+          <span class="step">Contract processed</span><span class="arrow">→</span>
+          <span class="step">Live CA environment</span><span class="arrow">→</span>
+          <span class="step">Initial client admin created</span><span class="arrow">→</span>
+          <span class="step">Client configures and provisions staff</span>
+        </div>
+        <p><b>Decision to resolve:</b> Define who identifies and creates the new-logo admin user for D/E, and what event triggers that work. Assess a task for IS under Migrations or Collin’s Quality team. These are options to evaluate, not assigned owners.</p>
+      </div>
       <div class="decision-grid">
         <article class="decision-card locked">
           <span class="label" style="color:var(--green)">Direction already agreed</span>
           <h3>Keep these decisions intact</h3>
           <ul>
             <li>EOY is the target for switching packages, not R3. Pilot first; keep sold packages in place until courses and enrollment rules exist, then grandfather them.</li>
-            <li>The client creates user accounts, manages operational group placement, and owns completion monitoring. PMs consult; they do not provision users or groups. Product Education will not chase completion reports. Any reporting aid should come from Academy/OXP tooling or an agent.</li>
+            <li>The client owns routine staff user management, operational group placement, and completion monitoring. PMs consult; they do not provision staff users or groups. The first client admin account is a separate setup dependency for D/E and needs a named owner. Product Education will not chase completion reports.</li>
             <li>Design for the typical 80%; keep a workable path for the 20% takeover cases. No shared training login. Staff who are not yet employed cannot get early access.</li>
             <li>If a pre-go-live group is used, the client likely moves staff into operational groups at go-live.</li>
             <li>Keep A/B/C pre-training, live core, and post-go-live 30/60. This task force defines D/E; it does not redesign live agendas.</li>
@@ -427,6 +443,8 @@
           <ul>
             <li>Can existing Entrata Groups and enrollment rules serve the new-hire path, or is a separate Academy + Help-only group needed?</li>
             <li>How many days before go-live do customers usually know and create user accounts?</li>
+            <li>How long does contract signature to processing take? After processing opens the live CA environment, who identifies and creates the initial client admin user for D/E, and when does that happen?</li>
+            <li>Should initial admin setup become a task for IS under Migrations, or could Collin’s Quality team own it? Confirm the best fit before assigning it.</li>
             <li>Do new logos, acquisitions/takeovers, and later phases need different paths?</li>
             <li>If a learning-only group is used, can the client own moving people into operational groups at go-live, as expected?</li>
             <li>Who assigns the go-live courses: the client, enrollment automation, or a hybrid?</li>
@@ -442,7 +460,7 @@
           <tr><td><b>1. Restart discovery</b></td><td>Wyatt; Dallas recruits</td><td>Use the existing group DM. Dallas selects 3 PMs and 3 recent new-logo clients: a clean new logo, a takeover, and a later-phase acquisition.</td></tr>
           <tr><td><b>2. Interview and report</b></td><td>Dallas leads; Wyatt + Kyle join; Mora supports cross-team discovery</td><td>Six conversations, then a one-page timing view (how early users are known), a yes/no/conditional call on the pre-go-live group, and a list of work we will not take on.</td></tr>
           <tr><td><b>3. Draft the D/E go-live course path in parallel</b></td><td>Kyle; verify with EA / product</td><td>Map A/B/C pre-training to D/E; define required vs optional courses, order, estimated hours, completion criteria, and which assignments need automation. Test existing-group rules, new-member enrollment, and preview vs actual-user behavior; check DEV-340876 and R3 vs EOY capability.</td></tr>
-          <tr><td><b>4. Write the provisioning plan</b></td><td>Wyatt, Dallas, Kyle</td><td>After steps 2 and 3: document the 80% and takeover paths, pre-group decision and group-move owner, client vs automation assignment, pilot client/segment and observer, package grandfathering, and a PM consult script that says Product Education does not provision users.</td></tr>
+          <tr><td><b>4. Write the provisioning plan</b></td><td>Wyatt, Dallas, Kyle</td><td>After steps 2 and 3: document contract-to-processing timing, the initial admin-user trigger and owner, the 80% and takeover paths, pre-group decision and group-move owner, client vs automation assignment, pilot client/segment and observer, package grandfathering, and a PM consult script that says Product Education does not provision users.</td></tr>
         </tbody>
       </table>
       <div class="two-col" style="margin-top:18px">
