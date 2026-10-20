@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A decision brief on customer learning coverage, the D/E pilot, and the proposed operating model.">
+  <title>Customer learning coverage | Wyatt brief</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202b29;
+      --muted: #62716d;
+      --line: #dfe7e3;
+      --paper: #fff;
+      --wash: #f3f6f4;
+      --green: #00644f;
+      --green-dark: #004f40;
+      --green-pale: #e7f4ed;
+      --amber: #a9671d;
+      --amber-pale: #fff5e9;
+      --purple: #675294;
+      --purple-pale: #f0ebfb;
+      --blue: #315f8b;
+      --blue-pale: #eaf3fb;
+      --rose: #a8453b;
+      --rose-pale: #fff4f2;
+      --shadow: 0 1px 2px rgba(26, 45, 38, .04), 0 12px 32px rgba(26, 45, 38, .035);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background: #f4f7f5;
+      color: var(--ink);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    a { color: var(--green); text-underline-offset: 3px; }
+    a:hover { color: var(--green-dark); }
+    .top { background: var(--paper); border-bottom: 1px solid var(--line); }
+    .top-inner, .wrap { width: min(100% - 48px, 1320px); margin: 0 auto; }
+    .top-inner { padding: 18px 0 20px; }
+    .brand-row { display: flex; gap: 14px; align-items: center; }
+    .mark { display: grid; width: 48px; height: 48px; place-items: center; flex: 0 0 auto; border-radius: 13px; background: var(--green-dark); color: white; font-size: 22px; font-weight: 800; }
+    .brand-title { font-size: 20px; font-weight: 760; letter-spacing: -.03em; }
+    .brand-title span { color: #77837f; font-weight: 500; }
+    .badge { display: inline-flex; align-items: center; margin-left: 10px; padding: 4px 12px; border-radius: 999px; background: #d9f1e3; color: var(--green-dark); font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+    .date { margin-left: auto; color: var(--muted); font-size: 14px; }
+    .mission { margin: 15px 0 0; color: #52625d; font-size: 16px; }
+    .mission b { color: var(--green-dark); }
+    .wrap { padding-bottom: 52px; }
+    .nav-wrap { position: sticky; z-index: 5; top: 0; padding: 16px 0 8px; background: rgba(244, 247, 245, .94); backdrop-filter: blur(12px); }
+    nav { display: flex; gap: 5px; overflow-x: auto; padding: 6px; border: 1px solid var(--line); border-radius: 14px; background: white; box-shadow: var(--shadow); scrollbar-width: thin; }
+    nav a { flex: 0 0 auto; padding: 9px 16px; border-radius: 10px; color: #687671; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    nav a:hover, nav a:focus-visible { background: var(--green-dark); color: white; outline: none; }
+    section { scroll-margin-top: 94px; }
+    .panel { margin-top: 18px; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); box-shadow: var(--shadow); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 8px; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.045em; }
+    h2 { margin-bottom: 8px; font-size: 24px; line-height: 1.2; letter-spacing: -.03em; }
+    h3 { margin-bottom: 6px; font-size: 17px; line-height: 1.3; letter-spacing: -.015em; }
+    .kicker { margin-bottom: 7px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .lede { max-width: 890px; margin-bottom: 0; color: var(--muted); font-size: 18px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 30px; align-items: center; }
+    .ask { padding: 17px 19px; border: 1px solid #ecd9bd; border-left: 5px solid var(--amber); border-radius: 11px; background: var(--amber-pale); }
+    .ask-label, .label { display: block; margin-bottom: 6px; color: #815318; font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .ask p { margin: 0; font-size: 15px; font-weight: 650; line-height: 1.45; }
+    .why-copy { max-width: 1100px; margin: 13px 0 0; color: #53615d; font-size: 17px; }
+    .supporting-copy { margin: 10px 0 0; color: var(--muted); }
+    .three-points { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+    .point { min-height: 106px; padding: 17px 18px; border-radius: 14px; background: var(--wash); }
+    .point .label { color: #75827d; }
+    .point strong { display: block; font-size: 17px; line-height: 1.4; }
+    .point a { font-weight: 750; text-decoration: none; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 19px 0 8px; }
+    .metric { min-height: 126px; padding: 17px 18px; border-radius: 14px; background: #eef3f0; }
+    .metric .label { min-height: 31px; margin-bottom: 7px; color: #728079; }
+    .metric b { display: block; font-size: 31px; line-height: 1.1; letter-spacing: -.04em; }
+    .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .note { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    .section-heading { display: flex; gap: 20px; justify-content: space-between; align-items: end; margin-bottom: 18px; }
+    .section-heading p { max-width: 680px; margin: 0; color: var(--muted); }
+    .coverage-layout { display: grid; grid-template-columns: 1.25fr .75fr; gap: 20px; align-items: stretch; }
+    .formats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .format { min-height: 148px; padding: 18px; border: 1px solid var(--line); border-top: 4px solid #b7c4be; border-radius: 13px; background: #fbfcfb; }
+    .format.course { border-top-color: var(--green); }
+    .format.help { border-top-color: #539276; }
+    .format.overview { border-top-color: var(--amber); }
+    .format.webinar { border-top-color: #8774ad; }
+    .format p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .example { padding: 21px; border: 1px solid #d7e8dd; border-radius: 14px; background: var(--green-pale); }
+    .example p { margin: 8px 0 0; color: #365a4d; font-size: 14px; }
+    .example .note { color: #536f63; }
+    .pathways { display: grid; gap: 11px; margin-top: 17px; }
+    .track { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px; border-radius: 13px; background: var(--wash); }
+    .track.de { background: var(--blue-pale); }
+    .track-name { font-size: 15px; font-weight: 800; }
+    .steps { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+    .step { padding: 7px 11px; border: 1px solid #e0e7e3; border-radius: 8px; background: white; font-size: 14px; font-weight: 650; }
+    .arrow { color: #83918b; font-size: 18px; }
+    .pilot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    .pilot-box { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: #fbfcfb; }
+    .pilot-box.workbook { border-color: #efdfca; background: #fffaf3; }
+    .pilot-box p, .pilot-box li { color: var(--muted); font-size: 14px; }
+    .pilot-box p:last-child { margin-bottom: 0; }
+    .pilot-box ul { margin: 8px 0 0; padding-left: 20px; }
+    .asset-stat { display: inline-block; margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: var(--blue-pale); color: #274e71; font-weight: 800; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .ownership { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+    .owner-card { padding: 17px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfb; }
+    .owner-card p { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
+    .tag { display: inline-block; margin-bottom: 10px; padding: 4px 9px; border-radius: 999px; background: var(--purple-pale); color: var(--purple); font-size: 12px; font-weight: 800; }
+    .tag.blue { background: var(--blue-pale); color: var(--blue); }
+    .tag.green { background: var(--green-pale); color: var(--green); }
+    .alert { padding: 19px 21px; border: 1px solid #f0c9c4; border-radius: 14px; background: var(--rose-pale); }
+    .alert p { margin: 0; color: #563c39; }
+    .proof { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; align-items: start; margin-top: 18px; }
+    .proof-list { display: grid; gap: 10px; }
+    .proof-item { padding: 14px 16px; border-radius: 11px; background: var(--wash); }
+    .proof-item b { display: block; margin-bottom: 3px; }
+    .proof-item span { color: var(--muted); font-size: 14px; }
+    .journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 18px; }
+    .journey-card { min-height: 136px; padding: 16px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 12px; background: #fbfcfb; }
+    .journey-card:nth-child(4), .journey-card:nth-child(5) { border-top-color: var(--green); }
+    .journey-card b { display: block; margin-bottom: 7px; color: var(--blue); font-size: 14px; }
+    .journey-card:nth-child(4) b, .journey-card:nth-child(5) b { color: var(--green); }
+    .journey-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .role-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .role-card { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: #fbfcfb; }
+    .role-card p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+    .role-card .label { margin-top: 13px; margin-bottom: 2px; color: #78857f; }
+    .curriculum-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .curriculum-card { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: #fbfcfb; }
+    .curriculum-card h3 { margin-bottom: 11px; }
+    .course-list { margin: 0; padding: 0; list-style: none; counter-reset: course; }
+    .course-list li { position: relative; margin: 0; padding: 7px 0 7px 30px; border-top: 1px solid #e8eeeb; color: #455650; font-size: 14px; line-height: 1.4; counter-increment: course; }
+    .course-list li::before { position: absolute; left: 0; top: 7px; color: var(--green); font-size: 12px; font-weight: 800; content: counter(course); }
+    .curriculum-note { margin: 14px 0 0; padding: 13px 16px; border-left: 4px solid var(--amber); border-radius: 0 10px 10px 0; background: var(--amber-pale); color: #654c2e; font-size: 14px; }
+    .follow-on { width: 100%; margin-top: 18px; border-collapse: collapse; border-radius: 12px; overflow: hidden; font-size: 14px; }
+    .follow-on th { padding: 12px 14px; background: var(--green-dark); color: white; text-align: left; }
+    .follow-on td { padding: 12px 14px; border: 1px solid var(--line); vertical-align: top; color: #53615d; }
+    .follow-on tr:nth-child(even) td { background: #f7faf8; }
+    .check-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .check-group { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: #fbfcfb; }
+    .check-group h3 { margin-bottom: 12px; }
+    .check-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .check-list label { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; color: #4f5f59; font-size: 14px; line-height: 1.4; cursor: pointer; }
+    .check-list input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--green); }
+    .owner-hint { color: #7a8782; font-size: 12px; }
+    .decision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin-top: 16px; }
+    .decision-card { padding: 17px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfb; }
+    .decision-card.locked { border-top: 4px solid var(--green); }
+    .decision-card.open { border-top: 4px solid var(--amber); }
+    .decision-card p, .decision-card li { color: var(--muted); font-size: 14px; }
+    .decision-card ul { margin: 8px 0 0; padding-left: 19px; }
+    .decision-card li { margin: 5px 0; }
+    .work-plan { width: 100%; margin-top: 18px; border-collapse: collapse; font-size: 14px; }
+    .work-plan th { padding: 11px 13px; background: var(--green-dark); color: white; text-align: left; }
+    .work-plan td { padding: 12px 13px; border: 1px solid var(--line); vertical-align: top; color: #53615d; }
+    .work-plan tr:nth-child(even) td { background: #f7faf8; }
+    .status-note { margin-top: 16px; padding: 14px 17px; border: 1px solid #efdfca; border-radius: 11px; background: var(--amber-pale); color: #654c2e; font-size: 14px; }
+    .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-top: 16px; }
+    .milestone { padding: 14px; border-radius: 11px; background: var(--wash); }
+    .milestone b { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: 13px; }
+    .milestone span { color: var(--muted); font-size: 13px; }
+    details.interview-guide { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfb; }
+    details.interview-guide summary { padding: 14px 17px; color: var(--green-dark); font-weight: 750; cursor: pointer; }
+    details.interview-guide[open] summary { border-bottom: 1px solid var(--line); }
+    .interview-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 18px; }
+    .interview-columns ul { margin: 8px 0 0; padding-left: 19px; color: var(--muted); font-size: 14px; }
+    .interview-columns li { margin: 6px 0; }
+    .sources { margin-top: 20px; padding: 16px 4px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .sources p { margin: 0 0 6px; }
+    .sources a { white-space: nowrap; }
+    .footer { padding: 22px 0 0; color: #738079; font-size: 12px; text-align: center; }
+    @media (max-width: 850px) {
+      .intro, .coverage-layout, .proof { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .track { grid-template-columns: 1fr; gap: 8px; }
+      .ownership { grid-template-columns: 1fr; }
+      .three-points { grid-template-columns: repeat(2, 1fr); }
+      .journey { grid-template-columns: repeat(2, 1fr); }
+      .role-cards, .curriculum-cards { grid-template-columns: 1fr; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .milestones { grid-template-columns: repeat(2, 1fr); }
+      .interview-columns { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .top-inner, .wrap { width: min(100% - 28px, 1320px); }
+      .top-inner { padding-top: 13px; }
+      .brand-row { gap: 9px; flex-wrap: wrap; }
+      .mark { width: 42px; height: 42px; }
+      .brand-title { font-size: 17px; }
+      .badge { margin-left: 3px; }
+      .date { width: 100%; margin: 1px 0 0 51px; }
+      .mission { font-size: 14px; }
+      .nav-wrap { padding-top: 10px; }
+      nav a { padding: 8px 12px; font-size: 14px; }
+      .panel { padding: 19px; border-radius: 15px; }
+      .three-points, .formats, .pilot-grid, .two-col, .role-cards, .curriculum-cards, .check-groups { grid-template-columns: 1fr; }
+      .journey { grid-template-columns: 1fr; }
+      .milestones { grid-template-columns: 1fr; }
+      .metrics { gap: 8px; }
+      .metric { min-height: 116px; padding: 13px; }
+      .metric b { font-size: 25px; }
+      .metric .label { font-size: 10px; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 7px; }
+      .sources a { white-space: normal; }
+    }
+    @page { size: 11.5in 8in; margin: .35in; }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .top { border-bottom: 1px solid #cdd8d2; }
+      .top-inner, .wrap { width: 100%; }
+      .nav-wrap { position: static; padding: 8px 0; background: white; }
+      nav { box-shadow: none; }
+      nav a { padding: 6px 11px; }
+      .panel { margin-top: 12px; padding: 20px; box-shadow: none; break-inside: avoid; }
+      .metric, .format, .example, .track, .pilot-box, .owner-card, .proof-item, .alert, .point { break-inside: avoid; }
+      h1 { font-size: 31px; }
+      h2 { font-size: 20px; }
+      .footer { display: none; }
+      a { color: var(--green-dark); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand-row">
+        <div class="mark" aria-hidden="true">C</div>
+        <div class="brand-title">D/E self-service <span>· Provisioning plan</span></div>
+        <span class="badge">TASK FORCE</span>
+        <div class="date">Wyatt discussion · October 2026</div>
+      </div>
+      <p class="mission"><b>Mission:</b> Make the D/E customer path work from first user access through go-live learning, with the client owning provisioning and completion.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="nav-wrap">
+      <nav aria-label="Brief sections">
+        <a href="#briefing">Briefing</a>
+        <a href="#de-path">Self-service flow</a>
+        <a href="#task-force">Task-force plan</a>
+        <a href="#customer-plan">Customer plan</a>
+        <a href="#curriculum">Course sequence</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#pilot-proof">Pilot and proof</a>
+        <a href="#coverage">Broader coverage</a>
+        <a href="#operating-model">Team capacity</a>
+      </nav>
+    </div>
+
+    <section id="briefing" class="panel">
+      <div class="intro">
+        <div>
+          <p class="kicker">The task-force question</p>
+          <h1>Make D/E self-service work at go-live.</h1>
+          <p class="lede">Validate the full customer path: user access, working enrollment rules, role-based go-live learning, and customer-owned completion monitoring. Then test it with a new-logo client on the new LMS.</p>
+        </div>
+        <aside class="ask">
+          <span class="ask-label">Decision for Wyatt</span>
+          <p>Approve the discovery and course-path work, rule testing, and one-client pilot. Keep sold packages in place until the path and enrollment rules work.</p>
+        </aside>
+      </div>
+      <h2 style="margin-top:25px">What has to work</h2>
+      <p class="why-copy">Customers follow the path they receive. For D/E, that means solving user access, enrollment, learning, and completion as one provisioning problem. If any link fails, the customer is left without the training path we promised.</p>
+      <div class="three-points">
+        <div class="point"><span class="label">1 · Access</span><strong>Client creates the users. Test existing groups before proposing a new access group.</strong></div>
+        <div class="point"><span class="label">2 · Enrollment</span><strong>Rules assign the right go-live learning, or the client uses a clear manual path.</strong></div>
+        <div class="point"><span class="label">3 · Learning</span><strong>The course path replaces the trainer for D/E; task help supports real work.</strong></div>
+        <div class="point"><span class="label">4 · Ownership</span><strong>Client monitors completion. PMs consult. Product Education does not provision users.</strong></div>
+      </div>
+    </section>
+
+    <section id="de-path" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">D/E customer path</p><h2>Same workflows. No live class.</h2></div>
+        <p>Make the self-service route clear and role-based, then connect it to the enrollment workbook customers receive.</p>
+      </div>
+      <div class="pathways" aria-label="Comparison of assisted and D/E learning paths">
+        <div class="track"><div class="track-name">A/B/C · live stays</div><div class="steps"><span class="step">Pre-training</span><span class="arrow">→</span><span class="step">Live core</span><span class="arrow">→</span><span class="step">Post-go-live 30/60</span></div></div>
+        <div class="track de"><div class="track-name">D/E · no trainer assumed</div><div class="steps"><span class="step">Go-live course path</span><span class="arrow">→</span><span class="step">Help Center task guidance</span><span class="arrow">→</span><span class="step">Role follow-ons</span></div></div>
+      </div>
+      <div class="two-col" style="margin-top:14px">
+        <article class="pilot-box"><h3>E segment · under 1,000 units</h3><p>Basic package; 0 live sessions. The go-live course path is the training.</p></article>
+        <article class="pilot-box"><h3>D segment · 1,000–3,000 units</h3><p>Basic Plus package; 2 live sessions today, with direction toward self-service. Design the same core path and don’t assume a trainer will fill gaps.</p></article>
+      </div>
+      <div class="pilot-grid">
+        <article class="pilot-box">
+          <span class="label" style="color:#315f8b">Proposed curriculum</span>
+          <h3>18 course assets or assignment slots</h3>
+          <span class="asset-stat">11 Leasing · 4 Property Manager · 3 Maintenance*</span>
+          <p>That is 18 slots, not 18 new builds. The Maintenance count is 2 required plus 1 conditional. One payment slot has 2 alternatives, so the workbook offers 19 choices.</p>
+          <p class="note">*Reconcile the final list with the earlier draft before approval.</p>
+        </article>
+        <article class="pilot-box workbook">
+          <span class="label">Workbook rules</span>
+          <h3>The workbook is the path customers receive.</h3>
+          <p>Customers say they do what it sends. Set defaults by delivery track, role, responsibility, enabled products, and task timing where supported. Keep workbook choices consistent with the Academy path and check for missing or duplicate assignments.</p>
+          <p>The Sep 21 task-force note expected a version of enrollment types in R3; EA had not revalidated what ships. Fuller rules were still aimed at EOY. Don’t switch sold packages until the courses and enrollment rules are built. Grandfather packages already sold.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="customer-plan" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">What a customer experiences</p><h2>A staged learning journey, tied to real work.</h2></div>
+        <p>Send the first tasks before launch, practice in go-live week, then add follow-on learning when the work becomes relevant.</p>
+      </div>
+      <div class="alert"><p><b>What to expect:</b> Staff receive role-based Academy learning in small waves. Each go-live mission pairs learning with a task to practice and a way to get help. The Academy admin tracks completion; a supervisor checks the first real task.</p></div>
+      <div class="journey" aria-label="Customer learning journey">
+        <div class="journey-card"><b>Before go-live</b><p>If staff accounts and access are ready, learn the role basics and prepare for the first task. If not, begin with the go-live course path.</p></div>
+        <div class="journey-card"><b>Go-live week</b><p>Complete short workflow missions and practice the work you will perform.</p></div>
+        <div class="journey-card"><b>Week 1</b><p>Use Help Center task guidance while doing real work. Raise access or setup blockers.</p></div>
+        <div class="journey-card"><b>Around day 30</b><p>Add common follow-on work that matches your responsibilities.</p></div>
+        <div class="journey-card"><b>Around day 60</b><p>Add oversight, reporting, or advanced work only when your role needs it.</p></div>
+      </div>
+      <div class="role-cards">
+        <article class="role-card"><h3>Leasing Agent</h3><span class="label">First workflows</span><p>Leads and guest cards, applications, screening, quotes, and lease execution.</p><span class="label">Later, as needed</span><p>Message Center, lead management, reporting, and enabled leasing products.</p></article>
+        <article class="role-card"><h3>Property Manager</h3><span class="label">First workflows</span><p>Leasing when owned by the role, plus move-ins, resident ledgers, charges, and the selected payment workflow.</p><span class="label">Later, as needed</span><p>Collections, financial move-outs, maintenance oversight, AP, Make Ready, and reporting.</p></article>
+        <article class="role-card"><h3>Maintenance Technician</h3><span class="label">First workflows</span><p>Receive, update, and complete work orders in the Facilities App. Create orders if that is part of the job.</p><span class="label">Later, as needed</span><p>Make Ready and inspections for technicians who perform them; approvals and bulk updates for leads or supervisors.</p></article>
+      </div>
+      <div class="two-col" style="margin-top:16px">
+        <article class="pilot-box"><h3>Each mission has a job outcome</h3><p>For example: process an application, complete a move-in, or update a work order. The learner follows a short course sequence, uses a task checklist, and finds the matching Help Center guidance.</p></article>
+        <article class="pilot-box"><h3>Readiness means doing the task</h3><p>The learner practices in an approved environment or customer exercise. A supervisor checks the first real task and records access, setup, or workflow problems.</p></article>
+      </div>
+    </section>
+
+    <section id="curriculum" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">Customer-facing curriculum</p><h2>What each role may take.</h2></div>
+        <p>These are candidate Academy courses for a self-guided launch. Confirm duties, enabled products, availability, and assignment timing before enrollment.</p>
+      </div>
+      <div class="curriculum-cards">
+        <article class="curriculum-card">
+          <h3>Leasing Agent · first workflow sequence</h3>
+          <ol class="course-list">
+            <li>General Overview of Entrata</li><li>The Lead Profile</li><li>Guest Cards</li><li>Lead Communication*</li><li>Tours and Events with the Entrata Calendar</li><li>The Application Process</li><li>Processing a Screening**</li><li>Screening Results and Decisions**</li><li>Rent Quotes</li><li>Generating a Lease</li><li>Lease Signing</li>
+          </ol>
+        </article>
+        <article class="curriculum-card">
+          <h3>Property Manager · add owned work</h3>
+          <ol class="course-list">
+            <li>Resident Profile Ledgers</li><li>Move-Ins in Entrata</li><li>Resident Charges and Credits</li><li>In-Office Payments or Online Payments Overview</li>
+          </ol>
+          <p class="note">Add the Leasing Agent sequence only if the manager performs leasing. Choose the payment course that matches the person's work.</p>
+        </article>
+        <article class="curriculum-card">
+          <h3>Maintenance Technician · work-order path</h3>
+          <ol class="course-list">
+            <li>Managing a Work Order</li><li>Work Orders in the App</li><li>Creating a Work Order, if technicians create them</li>
+          </ol>
+          <p class="note">Pair these courses with practice receiving, updating, and completing a work order in the approved setting.</p>
+        </article>
+      </div>
+      <p class="curriculum-note">* For staff who communicate with prospects. ** Assign screening only after the customer confirms setup and readiness to practice. The sequence is staged across preparation and go-live week; it is not all due before launch.</p>
+      <h3 style="margin:22px 0 0">After launch · assign when the work becomes relevant</h3>
+      <table class="follow-on">
+        <thead><tr><th>Role</th><th>Around day 30</th><th>Around day 60</th></tr></thead>
+        <tbody>
+          <tr><td><b>Leasing Agent</b></td><td>Message Center, lead cleanup, and call tracking as used.</td><td>Entrata Reports and deeper leasing work as assigned.</td></tr>
+          <tr><td><b>Property Manager</b></td><td>Payment management, NSF, refunds, collections, financial move-outs, and work orders as owned.</td><td>AP, Make Ready oversight, and reporting as owned.</td></tr>
+          <tr><td><b>Maintenance Technician</b></td><td>Make Ready and performing inspections when assigned.</td><td>Inspection creation or approval and bulk work-order updates for leads or supervisors.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Assignment check:</b> The customer Academy admin and Entrata implementation contact confirm which courses apply. A supervisor verifies the first task. Course completion alone does not confirm job readiness.</p>
+    </section>
+
+    <section id="checklist" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">Customer action checklist</p><h2>Get the team ready.</h2></div>
+        <p>Use this with the implementation contact to confirm who learns what, when they can practice, and who checks readiness.</p>
+      </div>
+      <p class="note">You can mark these boxes while the page is open. The selections are not saved after you close it.</p>
+      <div class="check-groups">
+        <div class="check-group"><h3>1. Set up the learning path</h3><ul class="check-list">
+          <li><label><input type="checkbox"><span>Name the Academy admin who will manage staff groups and monitor completion.<br><span class="owner-hint">Owner: Customer</span></span></label></li>
+          <li><label><input type="checkbox"><span>List who owns leasing, move-ins, payments, work orders, inspections, reporting, and AP.<br><span class="owner-hint">Owner: Customer</span></span></label></li>
+          <li><label><input type="checkbox"><span>Confirm enabled products, required consultations, and workflows ready for practice.<br><span class="owner-hint">Owner: Customer + Entrata</span></span></label></li>
+          <li><label><input type="checkbox"><span>Agree on role paths and timing for required learning.<br><span class="owner-hint">Owner: Customer + Entrata</span></span></label></li>
+        </ul></div>
+        <div class="check-group"><h3>2. Check access before assigning work</h3><ul class="check-list">
+          <li><label><input type="checkbox"><span>Create staff accounts and confirm the agreed initial and operational group steps.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+          <li><label><input type="checkbox"><span>Have one learner in each role open assigned Academy learning and Help Center guidance.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+          <li><label><input type="checkbox"><span>Confirm the practice method and permissions needed for the first task.<br><span class="owner-hint">Owner: Customer + Entrata</span></span></label></li>
+          <li><label><input type="checkbox"><span>Tell learners whom to contact when access, setup, or a workflow blocks them.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+        </ul></div>
+        <div class="check-group"><h3>3. Check readiness during go-live week</h3><ul class="check-list">
+          <li><label><input type="checkbox"><span>Complete the assigned first-workflow missions and short checks.<br><span class="owner-hint">Owner: Learner</span></span></label></li>
+          <li><label><input type="checkbox"><span>Practice the first job task in the approved environment or customer exercise.<br><span class="owner-hint">Owner: Learner</span></span></label></li>
+          <li><label><input type="checkbox"><span>Check the first real task and record anything needing follow-up.<br><span class="owner-hint">Owner: Supervisor</span></span></label></li>
+          <li><label><input type="checkbox"><span>Review completions and resolve missing assignments or blocked learners.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+        </ul></div>
+        <div class="check-group"><h3>4. Follow through after launch</h3><ul class="check-list">
+          <li><label><input type="checkbox"><span>In week 1, show staff where to find Help Center task guidance.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+          <li><label><input type="checkbox"><span>Around day 30, assign follow-on work based on each person's duties.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+          <li><label><input type="checkbox"><span>Around day 60, add reporting, oversight, or advanced work only where needed.<br><span class="owner-hint">Owner: Customer admin</span></span></label></li>
+        </ul></div>
+      </div>
+      <div class="curriculum-note"><b>When someone gets stuck:</b> The admin checks account, group, and assignment access. The implementation contact routes configuration or product questions. The learner uses relevant Help Center guidance while the issue is resolved.</div>
+    </section>
+
+    <section id="task-force" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">Go-live provisioning task force</p><h2>Set boundaries first. Resolve the open choices through discovery.</h2></div>
+        <p>Late, client-owned user setup can block Academy and Help Center access. D/E also has no live trainer to carry the go-live learning path. Manual provisioning is a design constraint, not a reason to drop self-service.</p>
+      </div>
+      <div class="status-note"><b>Status needs refresh:</b> The Sep 21 task-force outline says discovery and the D/E course outline had not started as tracked work. It describes the team as behind on discovery, not in an R3 crisis. Refresh interview and pilot progress before sharing this as current; the newest linked Slack details are dated Sep 24.</div>
+      <div class="decision-grid">
+        <article class="decision-card locked">
+          <span class="label" style="color:var(--green)">Direction already agreed</span>
+          <h3>Keep these decisions intact</h3>
+          <ul>
+            <li>EOY is the target for switching packages, not R3. Pilot first; keep sold packages in place until courses and enrollment rules exist, then grandfather them.</li>
+            <li>The client creates user accounts, manages operational group placement, and owns completion monitoring. PMs consult; they do not provision users or groups. Product Education will not chase completion reports. Any reporting aid should come from Academy/OXP tooling or an agent.</li>
+            <li>Design for the typical 80%; keep a workable path for the 20% takeover cases. No shared training login. Staff who are not yet employed cannot get early access.</li>
+            <li>If a pre-go-live group is used, the client likely moves staff into operational groups at go-live.</li>
+            <li>Keep A/B/C pre-training, live core, and post-go-live 30/60. This task force defines D/E; it does not redesign live agendas.</li>
+          </ul>
+        </article>
+        <article class="decision-card open">
+          <span class="label">Discovery must answer</span>
+          <h3>Don’t lock these before interviews</h3>
+          <ul>
+            <li>Can existing Entrata Groups and enrollment rules serve the new-hire path, or is a separate Academy + Help-only group needed?</li>
+            <li>How many days before go-live do customers usually know and create user accounts?</li>
+            <li>Do new logos, acquisitions/takeovers, and later phases need different paths?</li>
+            <li>If a learning-only group is used, can the client own moving people into operational groups at go-live, as expected?</li>
+            <li>Who assigns the go-live courses: the client, enrollment automation, or a hybrid?</li>
+            <li>Which new-logo client and segment should pilot, and who observes customer progress and records team effort?</li>
+            <li>What ships in R3 enrollment types, and what requires the planned EOY rules? What consult script do PMs need?</li>
+          </ul>
+        </article>
+      </div>
+      <h3 style="margin:24px 0 0">Work in this order</h3>
+      <table class="work-plan">
+        <thead><tr><th>Step</th><th>Owner</th><th>Deliverable</th></tr></thead>
+        <tbody>
+          <tr><td><b>1. Restart discovery</b></td><td>Wyatt; Dallas recruits</td><td>Use the existing group DM. Dallas selects 3 PMs and 3 recent new-logo clients: a clean new logo, a takeover, and a later-phase acquisition.</td></tr>
+          <tr><td><b>2. Interview and report</b></td><td>Dallas leads; Wyatt + Kyle join; Mora supports cross-team discovery</td><td>Six conversations, then a one-page timing view (how early users are known), a yes/no/conditional call on the pre-go-live group, and a list of work we will not take on.</td></tr>
+          <tr><td><b>3. Draft the D/E go-live course path in parallel</b></td><td>Kyle; verify with EA / product</td><td>Map A/B/C pre-training to D/E; define required vs optional courses, order, estimated hours, completion criteria, and which assignments need automation. Test existing-group rules, new-member enrollment, and preview vs actual-user behavior; check DEV-340876 and R3 vs EOY capability.</td></tr>
+          <tr><td><b>4. Write the provisioning plan</b></td><td>Wyatt, Dallas, Kyle</td><td>After steps 2 and 3: document the 80% and takeover paths, pre-group decision and group-move owner, client vs automation assignment, pilot client/segment and observer, package grandfathering, and a PM consult script that says Product Education does not provision users.</td></tr>
+        </tbody>
+      </table>
+      <div class="two-col" style="margin-top:18px">
+        <article class="pilot-box"><span class="tag blue">80% path · hypothesis</span><p>Client creates users; PM consults if needed. First test role-based rules on existing Entrata Groups, which Slack says can target new hires; create a limited Academy + Help group only if that test and customer discovery support it. Client monitors completion and owns operational group moves.</p></article>
+        <article class="pilot-box"><span class="tag">20% takeover path</span><p>Staff details arrive at keys or day one, with no early access. The go-live course, or the portion staff can complete that week, is the training. Keep this edge case workable without making it the default.</p></article>
+      </div>
+      <div class="status-note"><b>Enrollment rules to test:</b> Brandon said existing Entrata Groups were already live with rules that could target new hires or accounting users, so a separate default group may not be needed. Sep 22–24 tests exposed preview-permission confusion and new group members not enrolling; the linked <a href="https://entrata.atlassian.net/browse/DEV-340876">DEV-340876</a> ticket was slated for the next sprint. The supplied <a href="https://entrata.slack.com/archives/C0C1AKRQ002">Slack thread</a> has no fix confirmation. Test a newly added member and the actual user's view before relying on it. Brandon also listed Oct 13 as the target for direct team course uploads to the global catalog; verify delivery before using that date in the schedule.</div>
+      <div class="milestones" aria-label="Proposed task force timing">
+        <div class="milestone"><b>October · discovery + outline</b><span>Restart the overdue interviews and draft the D/E go-live path.</span></div>
+        <div class="milestone"><b>Fall · pilot</b><span>Test with one or a few new logos; add a pre-go-live group only if discovery supports it.</span></div>
+        <div class="milestone"><b>EOY · switch only when ready</b><span>Move package model after courses and enrollment rules exist; preserve sold packages.</span></div>
+        <div class="milestone"><b>After · sustain</b><span>Product Education maintains the path; connect LPWs to the customer journey.</span></div>
+      </div>
+      <details class="interview-guide">
+        <summary>Interview prompts for PMs and customer admins</summary>
+        <div class="interview-columns">
+          <div><h3>Ask PMs</h3><ul>
+            <li>From contract to first site users, who creates them, in what tool, and when?</li>
+            <li>When do you consult on users and groups, and when do you tell the client it is theirs to manage?</li>
+            <li>How often are staff names missing until keys or takeover day?</li>
+            <li>Would an Academy + Help Center-only pre-go-live group help? Could the client own moving users into operational groups?</li>
+          </ul></div>
+          <div><h3>Ask customer admins</h3><ul>
+            <li>When did you know staff names and emails relative to training and go-live?</li>
+            <li>What blocked Academy access: user, group, license, or not knowing it was available?</li>
+            <li>Who should move users from a learning-only group into their real group?</li>
+            <li>Would you monitor completion if the Academy/OXP report were clear, without Product Education pulling it?</li>
+          </ul></div>
+        </div>
+      </details>
+      <p class="note">Source trail: <a href="https://docs.google.com/document/d/1APg2h54D7ym3QNMoTpfSI2_ol7QeGw91vnnwjniHc2Y/edit">Product Ed Leadership Sync · Aug 13</a> · <a href="https://entrata.slack.com/archives/C0C1AKRQ002">Slack enrollment-rule discussion · Sep 11–24</a>. The task-force and Slack status notes need a live refresh.</p>
+      <p class="curriculum-note"><b>Dependency:</b> D/E scale depends on EA/OXP auto-enrollment and learning plans. R3 is a partial step, not proof that the full rules are ready. Don’t change package promises until the learning path and its enrollment method are built and tested.</p>
+    </section>
+
+    <section id="operating-model" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">Team focus and speed</p><h2>Measure the work before setting the runway.</h2></div>
+        <p>Test research, writing, review, and rework through the new process. Set deadlines from observed effort, not an assumed pace.</p>
+      </div>
+      <div class="two-col">
+        <article class="alert">
+          <span class="tag">90-day pilot staffing</span>
+          <h3>Keep the allocation bounded.</h3>
+          <p>3 IDs maintain published content; 1 coordinates D/E, the workbook, and the pilot; 1 handles urgent changes and approved builds. Five IDs steward product areas; two IDEs review high-risk work. At day 90, use measured workload to recommend the ongoing model.</p>
+        </article>
+        <article class="pilot-box">
+          <span class="tag blue">Speed after the coverage floor</span>
+          <h3>Close the post-release maintenance gap.</h3>
+          <p>Focus updates on releases that change a workflow or carry higher risk. Reuse existing content where it remains accurate. Track release-to-update time and learner task success.</p>
+          <p class="note">Guru’s current targets: affected videos updated within 1 month and courses within 2 months of a standard release.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pilot-proof" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">90-day test</p><h2>Show evidence before locking in the model.</h2></div>
+        <p>Run the pilot with one client onboarding on the new LMS. Limit Docebo changes to current-customer transition needs.</p>
+      </div>
+      <div class="proof">
+        <div class="proof-list">
+          <div class="proof-item"><b>Customer outcome</b><span>Measure path use, task completion, and course helpfulness. Confirm the client can assign or receive the course path and monitor completion in the new LMS.</span></div>
+          <div class="proof-item"><b>Build and review time</b><span>Record research, drafting, SME/ID review, and revision time. Test one setup course for effects on errors and rework.</span></div>
+          <div class="proof-item"><b>Maintenance result</b><span>Report release-to-update time, content accuracy, and deferred work. Keep IDs accountable for accuracy and final decisions.</span></div>
+        </div>
+        <aside class="pilot-box">
+          <span class="tag green">Until timed assignment exists</span>
+          <h3>Give customers a workable manual path.</h3>
+          <p>Use role-based 30/60/90 guidance for timing. Discovery must decide whether course assignments are client-managed, automated, or hybrid. The client owns completion monitoring; Product Education will not pull learner reports.</p>
+        </aside>
+      </div>
+    </section>
+    <section id="coverage" class="panel">
+      <div class="section-heading">
+        <div><p class="kicker">Supporting strategy</p><h2>Keep the wider coverage plan in view.</h2></div>
+        <p>D/E self-service is the immediate task-force focus. The same quality bar should apply across product help, courses, and maintenance once the path works.</p>
+      </div>
+      <div class="metrics" aria-label="Academy usage and catalog evidence">
+        <div class="metric"><span class="label">Distinct course enrollments</span><b>93,664</b><span>In the 12-month usage report.</span></div>
+        <div class="metric"><span class="label">Enrollment concentration</span><b>~50%</b><span>Went to the top 32 course titles.</span></div>
+        <div class="metric"><span class="label">Review attention</span><b>121 / 208</b><span>Published courses past review or due within 90 days; 32 more are undated.</span></div>
+        <div class="metric"><span class="label">Material completion</span><b>37.1% / 39.2%</b><span>Overall / workbook materials. Completion is measured per material.</span></div>
+      </div>
+      <p class="note">The usage workbook reports course and material activity, not Help Center usage. We still need learner testing to prove those resources are findable and useful.</p>
+      <div class="coverage-layout" style="margin-top:20px">
+        <div class="formats">
+          <article class="format course"><h3>Full courses and microcourses</h3><p>Use a full course for a major workflow or setup decision that needs context and practice. Use a microcourse for one skill that benefits from a short lesson and practice.</p></article>
+          <article class="format help"><h3>Help Center how-tos</h3><p>Give steps for a defined task or setting, including prerequisites, completion checks, and edge cases.</p></article>
+          <article class="format overview"><h3>Overviews and release notes</h3><p>Overviews orient people and route them to details. Release notes explain what changed and who needs to know.</p></article>
+          <article class="format webinar"><h3>Webinars: choose one home</h3><p>Decide whether each webinar belongs in the LMS for assigned learning or the Help Center for reference. Don’t keep the same webinar in both.</p></article>
+        </div>
+        <aside class="example">
+          <span class="label" style="color:#426957">Coverage examples</span>
+          <h3>Help Center content can cover a task.</h3>
+          <p><a href="https://entratasupport.zendesk.com/hc/en-us/articles/14330744450459-Transfer-a-Resident-to-a-New-Unit">Transfer a Resident to a New Unit</a> gives just-in-time guidance with prerequisites, schedule and completion steps, and related resources. Updated Sep 22, 2026.</p>
+          <p><b>Reporting Overview</b> (article 12570277718939) routes users to help on permissions, creating and managing reports, packets, and schedules. Updated May 26, 2026.</p>
+          <p class="note">These are examples of task and topic coverage. Usage or learner testing should show whether people can find and use them.</p>
+        </aside>
+      </div>
+      <div class="sources">
+        <p><b>Sources and limits.</b> Usage: Sep 1, 2025–Sep 21, 2026 workbook, `Course Enrollments`, `Completion Rates`, and `Webinar Usage` tabs. Catalog counts are a Sep 2026 snapshot and need refresh before commitments. Webinar snapshot: 50 titles, 2,351 LMS enrollments, 40.2% completion; Help Center views are not included.</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1qCtR_6daFltCDIE_WARL4MNrr1a1rZs_/edit?usp=sharing">Usage workbook</a> · <a href="https://docs.google.com/spreadsheets/d/1OQ5lpUOuoE3clUwdupBLe3BHOs3N-CVA1wLu34a2CUY/edit?gid=1215848955#gid=1215848955">Course catalog</a> · <a href="https://app.getguru.com/card/ikXop6nT/Content-Currency-">Guru: Content Currency</a></p>
+      </div>
+    </section>
+    <footer class="footer">D/E self-service provisioning · Wyatt task-force brief · October 2026</footer>
+  </main>
+</body>
+</html>
